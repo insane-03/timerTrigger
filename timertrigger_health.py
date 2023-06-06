@@ -68,4 +68,5 @@ for news in top_health_news:
 
 if __name__ == "__main__":
     print("HI FUNCTION TIRGGER")
-    get_top_health_news()
+    def handler():
+        get_top_health_news()
