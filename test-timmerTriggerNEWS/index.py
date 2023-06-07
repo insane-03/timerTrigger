@@ -3,7 +3,7 @@ from os import environ
 from bs4 import BeautifulSoup
 cd=environ['mongoCD']
 from pymongo import MongoClient
-
+import time as t
 # Function to fetch the top health news stories from a given newspaper
 
 
@@ -40,7 +40,8 @@ def get_top_health_news():
                 'title': title,
                 'summary': summary,
                 'link': link,
-                'image': image
+                'image': image,
+                'time': t.localtime()
             })
 
     return top_news
@@ -66,6 +67,7 @@ for news in top_health_news:
     print(f"Summary: {news['summary']}")
     print(f"Link: {news['link']}")
     print(f"image: {news['image']}")
+    print(f"time: {t.localtime()}")
     print("---------------------")
 
 
