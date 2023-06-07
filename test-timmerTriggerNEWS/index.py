@@ -29,16 +29,18 @@ def get_top_health_news():
         news_articles = soup.find_all('article')[:3]
 
         for article in news_articles:
-            titles = article.find_all(['h2', 'h3'])
+            titles = article.find_all(['h2', 'h3']) if article.find_all(['h2', 'h3']) else None
             title = ' '.join(title.text.strip() for title in titles)
-            summary = article.find('p').text.strip()
-            link = article.find('a')['href']
+            summary =  article.find('p').text.strip() if article.find('p') else None
+            image = article.find('img')['src'] if article.find('img') else None
+            link = article.find('a')['href'] if article.find('a')['href'] else None
 
             top_news.append({
                 'newspaper': newspaper['name'],
                 'title': title,
                 'summary': summary,
-                'link': link
+                'link': link,
+                'image': image
             })
 
     return top_news
@@ -63,6 +65,7 @@ for news in top_health_news:
     print(f"Title: {news['title']}")
     print(f"Summary: {news['summary']}")
     print(f"Link: {news['link']}")
+    print(f"image: {news['image']}")
     print("---------------------")
 
 
