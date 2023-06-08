@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 # cd=environ['mongoCD']
 from pymongo import MongoClient
 import time as t
+import logging 
 # Function to fetch the top health news stories from a given newspaper
 
 
@@ -54,24 +55,24 @@ def store_in_mongodb(articles):
         collection = db['articles']
         collection.insert_many(articles)
     except Exception as e:
-        print(e)
+        logging.info(e)
 
 
 # Example usage
 top_health_news = get_top_health_news()
 store_in_mongodb(top_health_news)
-print(f"Stored top 5 health news stories.")
+logging.info(f"Stored top 5 health news stories.")
 # Print the results
 
 # Main function to fetch news stories from multiple sources and store in MongoDB
 for news in top_health_news:
-    print(f"Newspaper: {news['newspaper']}")
-    print(f"Title: {news['title']}")
-    print(f"Summary: {news['summary']}")
-    print(f"Link: {news['link']}")
-    print(f"image: {news['image']}")
-    print(f"time: {t.localtime()}")
-    print("---------------------")
+    logging.info(f"Newspaper: {news['newspaper']}")
+    logging.info(f"Title: {news['title']}")
+    logging.info(f"Summary: {news['summary']}")
+    logging.info(f"Link: {news['link']}")
+    logging.info(f"image: {news['image']}")
+    logging.info(f"time: {t.localtime()}")
+    logging.info("---------------------")
 
 
 if __name__ == "__main__":
