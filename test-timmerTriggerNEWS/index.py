@@ -1,7 +1,7 @@
 import requests
 from os import environ
 from bs4 import BeautifulSoup
-cd=environ['mongoCD']
+# cd=environ['mongoCD']
 from pymongo import MongoClient
 import time as t
 # Function to fetch the top health news stories from a given newspaper
@@ -48,7 +48,7 @@ def get_top_health_news():
 
 
 def store_in_mongodb(articles):
-    client = MongoClient(cd)
+    client = MongoClient("mongodb+srv://admin:admin@cluster29543.knkltc6.mongodb.net/")
     db = client['health_news']
     collection = db['articles']
     collection.insert_many(articles)
