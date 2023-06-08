@@ -48,10 +48,13 @@ def get_top_health_news():
 
 
 def store_in_mongodb(articles):
-    client = MongoClient("mongodb+srv://admin:admin@cluster29543.knkltc6.mongodb.net/")
-    db = client['health_news']
-    collection = db['articles']
-    collection.insert_many(articles)
+    try:
+        client = MongoClient("mongodb+srv://admin:admin@cluster29543.knkltc6.mongodb.net/")
+        db = client['health_news']
+        collection = db['articles']
+        collection.insert_many(articles)
+    except Exception as e:
+        print(e)
 
 
 # Example usage
