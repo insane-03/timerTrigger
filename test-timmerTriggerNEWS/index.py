@@ -42,7 +42,7 @@ def get_top_health_news():
                 'summary': summary,
                 'link': link,
                 'image': image,
-                'time': t.localtime()
+                # 'time': t.localtime()
             })
 
     return top_news
@@ -71,7 +71,7 @@ for news in top_health_news:
     logging.info(f"Summary: {news['summary']}")
     logging.info(f"Link: {news['link']}")
     logging.info(f"image: {news['image']}")
-    logging.info(f"time: {t.localtime()}")
+    # logging.info(f"time: {t.localtime()}")
     logging.info("---------------------")
 
 
